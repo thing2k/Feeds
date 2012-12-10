@@ -1,6 +1,7 @@
 Feeds.Preferences = {
 	fontSizeClassPrefix: 'fontsize-',
 	fontSizes: ['small' , 'medium' , 'large'],
+	itemOrders: ['o', 'n'],
 	
 	getCount: function()
 	{
@@ -155,6 +156,28 @@ Feeds.Preferences = {
 		Feeds.Preferences.saveAll();
 	},
 	
+  getItemOrder: function()
+	{
+		Feeds.Preferences.initAllPreferences();
+		var fz = Feeds.Preferences.settings.itemOrder || 'n';
+		if (Feeds.Preferences.itemOrders.indexOf(fz) === -1)
+		{
+			fz = Feeds.Preferences.itemOrders[1];
+		}
+		return fz;
+	},
+	
+  setItemOrder: function(fz)
+	{
+		
+		if (Feeds.Preferences.itemOrders.indexOf(fz) === -1)
+		{
+			fz = Feeds.Preferences.itemOrders[1];
+		}
+		Feeds.Preferences.settings.itemOrder = fz;
+		Feeds.Preferences.saveAll();
+	},
+
 	/// LANDSCAPE
 	
 	getLandscapeSettings: function()

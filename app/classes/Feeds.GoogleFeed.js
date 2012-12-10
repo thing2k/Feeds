@@ -81,6 +81,7 @@ Feeds.GoogleFeed = Class.create({
 		params.parameters = {
 			n: Feeds.Preferences.getCount(),
 			ck: Delicious.getTimeStamp(),
+			r: Feeds.Preferences.getItemOrder(),
 		}
 		Mojo.Log.info('--------getArticles' , getType , this.title);
 		if (getType == 'unread')
@@ -161,6 +162,7 @@ Feeds.GoogleFeed = Class.create({
 		params.parameters = {
 			n: Feeds.Preferences.getCount(),
 			ck: Delicious.getTimeStamp(),
+			r: Feeds.Preferences.getItemOrder(),
 		}
 		
 		if (getType == 'unread')
@@ -211,6 +213,7 @@ Feeds.GoogleFeed = Class.create({
 		params.parameters = {
 			n: Feeds.Preferences.getCount(),
 			ck: Delicious.getTimeStamp(),
+			r: Feeds.Preferences.getItemOrder(),
 			c: this.continuation
 		}
 		

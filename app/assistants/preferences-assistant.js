@@ -25,6 +25,10 @@ PreferencesAssistant = Class.create(Delicious.Assistant , {
 		this.fontSizeModel = {value: Feeds.Preferences.getFontSize()};
 		this.controller.setupWidget('fontSizeSelector', {label: $L("Font Size") , choices: this.fontSizeChoices} , this.fontSizeModel);
 		
+		this.itemOrderChoices = [{label : 'Newest', value: 'n'},{label : 'Oldest', value : 'o'}];
+		this.itemOrderModel = {value: Feeds.Preferences.getItemOrder()};
+		
+		this.controller.setupWidget('itemOrderSelector', {label: "Item Order" , choices: this.itemOrderChoices} , this.itemOrderModel);
 		
 		
 		var landscape = Feeds.Preferences.getLandscapeSettings();
@@ -79,6 +83,9 @@ PreferencesAssistant = Class.create(Delicious.Assistant , {
 		var fontSizeSelector = this.controller.get('fontSizeSelector');
 		fontSizeSelector.observe(Mojo.Event.propertyChange, this._onThemeChange);
 		
+		var itemOrderSelector = this.controller.get('itemOrderSelector');
+		itemOrderSelector.observe(Mojo.Event.propertyChange, this._onThemeChange);
+		
 		var landscapeModeToggle = this.controller.get('landscapeModeToggle');
 		landscapeModeToggle.observe(Mojo.Event.propertyChange, this._landscapeChange);
 		var scrollGesturesToggle = this.controller.get('scrollGesturesToggle');
@@ -104,6 +111,8 @@ PreferencesAssistant = Class.create(Delicious.Assistant , {
 		darkThemeToggle.stopObserving(Mojo.Event.propertyChange, this._onThemeChange);
 		var fontSizeSelector = this.controller.get('fontSizeSelector');
 		fontSizeSelector.stopObserving(Mojo.Event.propertyChange, this._onThemeChange);
+		var itemOrderSelector = this.controller.get('itemOrderSelector');
+		itemOrderSelector.stopObserving(Mojo.Event.propertyChange, this._onThemeChange);
 		
 		var landscapeModeToggle = this.controller.get('landscapeModeToggle');
 		landscapeModeToggle.stopObserving(Mojo.Event.propertyChange, this._landscapeChange);
@@ -139,6 +148,9 @@ PreferencesAssistant = Class.create(Delicious.Assistant , {
 		
 		var fz = this.fontSizeModel.value;
 		Feeds.Preferences.setFontSize(fz);
+
+		var fz = this.itemOrderModel.value;
+		Feeds.Preferences.setItemOrder(fz);
 		
 		Feeds.Preferences.applyThemeToBody(this.body);
 		

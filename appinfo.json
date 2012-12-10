@@ -1,12 +1,12 @@
 {
-	"id": "com.deliciousmorsel.feeds",
+	"id": "com.deliciousmorsel.feedsalt",
 	"version": "1.0.7",
 	"vendor": "Delicious Morsel LLC",
 	"company": "Delicious Morsel",
 	"copyright": "&copy; 2010 Delicious Morsel LLC",
 	"type": "web",
 	"main": "index.html",
-	"title": "Feeds",
+	"title": "Feeds Alt",
 	"icon": "icon.png",
 	"reportSuite": "dwilkinsllc.deliciousmorsel",
 	"noWindow": "true"
